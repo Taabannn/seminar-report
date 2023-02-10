@@ -2,31 +2,90 @@
 \chapter{مروری بر مطالعات انجام شده}
 %\thispagestyle{empty} 
 \section{مقدمه}
-هدف از این فصل که با عنوان‌های  «مروری بر ادبیات موضوع%
-\LTRfootnote{Literature Review}»،
-«مروری بر منابع» و یا «مروری بر پیشینه تحقیق%
-\LTRfootnote{Background Research}»
-معرفی می‌شود، بررسی و طبقه‌بندی یافته‌های تحقیقات دیگر محققان در سطح دنیا و تعیین و شناسایی خلأهای تحقیقاتی است. آنچه را که تحقیق شما به دانش موجود اضافه می‌کند، مشخص کنید. طرح پیشینه تحقیق%
-\LTRfootnote{Background Information}
-یک مرور محققانه است و تا آنجا باید پیش برود که پیش‌زمینهٔ تاریخی مناسبی از تحقیق را بیان کند و جایگاه تحقیق فعلی را در میان آثار پیشین نشان دهد. برای این منظور منابع مرتبط با تحقیق را بررسی کنید، البته نه آنچنان گسترده که کل پیشینه تاریخی بحث را در برگیرد. برای نوشتن این بخش:
-\begin{itemize}
-	\item
-	دانستنی‌های موجود و پیش‌زمینهٔ تاریخی و وضعیت کنونی موضوع را چنان بیان کنید که خواننده بدون مراجعه به منابع پیشین، نتایج حاصل از مطالعات قبلی را درک و ارزیابی کند.
-	\item
-	نشان دهید که بر موضوع احاطه دارید. پرسش تحقیق را همراه بحث و جدل‌ها و مسائل مطرح شده بیان کنید و مهم‌ترین تحقیق‌های انجام شده در این زمینه را معرفی نمائید.
-	\item
-	ابتدا مطالب عمومی‌تر و سپس پژوهش‌های مشابه با کار خود را معرفی کرده و نشان دهید که تحقیق شما از چه جنبه‌ای با کار دیگران تشابه یا تفاوت دارد.
-	\item
-	اگر کارهای قبلی را خلاصه کرده‌اید، از پرداختن به جزئیات غیرضروری بپرهیزید. در عوض، بر یافته‌ها و مسائل روش‌شناختی مرتبط و نتایج اصلی تأکید کنید و اگر بررسی‌ها و منابع مروری عمومی دربارهٔ موضوع موجود است، خواننده را به آنها ارجاع دهید.
-\end{itemize}
-
-\section{تعاریف، اصول و مبانی نظری}
-این قسمت ارائهٔ خلاصه‌ای از دانش کلاسیک موضوع است. این بخش الزامی نیست و بستگی به نظر استاد راهنما دارد.
+در این فصل به مرور تعدادی از مقالات مربوط به استراتژی ذخیره‌سازی و سیاست جایگزینی محتوا در حافظه برای شبکه‌های اینترنت اشیا می‌پردازیم. در ادامه الگوریتم‌های استفاده شده در مقالات، معماری به کار رفته برای پیاده‌سازی و چالش‌های آن برای محیط  استفاده شده به طور اجمالی بیان می شوند. 
 
 \section{مروری بر ادبیات موضوع}
-در این قسمت باید به کارهای مشابه دیگران در گذشته اشاره کرد و وزن بیشتر این قسمت بهتر است به مقالات ژورنالی سال‌های اخیر (۲ تا ۳ سال) تخصیص داده شود. به نتایج کارهای دیگران با ذکر دقیق مراجع باید اشاره شده و جایگاه و تفاوت تحقیق شما نیز با کارهای دیگران مشخص شود. استفاده از مقالات ژورنال‌های معتبر در دو یا سه سال اخیر، می‌تواند به اعتبار کار شما بیافزاید.
 
-\section{نتیجه‌گیری}
-‌در نتیجه‌گیری آخر این فصل، با توجه به بررسی انجام شده بر روی مراجع تحقیق، بخش‌های قابل گسترش و تحقیق در آن حیطه و چشم‌اندازهای تحقیق مورد بررسی قرار می‌گیرند.	در برخی از تحقیقات، نتیجه نهایی فصل روش تحقیق، ارائهٔ یک چارچوب کار تحقیقی 
-\lr{(research framework)}
-است.
+\subsubsection{\lr{Caching Transient Content for IoT Sensing: Multi-Agent Soft Actor-Critic}}
+	
+
+\begin{figure}[ht]
+	\centering 
+	\subfloat[روش کنترلی متمرکز]{ \label{fig:centralized}
+		\includegraphics[width=0.4\textwidth]{centralized}}
+	\hspace{2mm}
+	\subfloat[روش کنترلی غیرمتمرکز]{ \label{fig:decentralized}
+		\includegraphics[width=0.4\textwidth]{decntralized}}%
+	\caption{دیاگرام الگوریتم \lr{SAC} به کاررفته}
+	\label{fig:centralizedvsdec} %% label for entire figure
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=15cm]{centralizedSAC}}
+	\caption{الگوریتم \lr{Centralized Soft Actor-Critic}}
+	\label{fig:cSACAlgo}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=15cm]{decentralizedSAC}}
+	\caption{الگوریتم \lr{Decentralized Soft Actor-Critic}}
+	\label{fig:dSACAlgo}
+\end{figure}
+
+\subsubsection{\lr{Deep Reinforcement Learning for Cooperative Content Caching in Vehicular Edge Computing and Networks}}
+
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=10cm]{PG}}
+	\caption{دیاگرام \lr{Deep Deterministic Policy Gradient}}
+	\label{fig:PG}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=10cm]{DDPG}}
+	\caption{الگوریتم \lr{Deep Deterministic Policy Gradient}}
+	\label{fig:DDPG}
+\end{figure}
+
+\subsubsection{\lr{A Deep Reinforcement Learning-Based Caching Strategy for IoT Networks with Transient Data}}
+
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=10cm]{parent-leaf}}
+	\caption{نمایی از معماری ریشه-برگ}
+	\label{fig:parent-leaf}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=10cm]{PPO-diagram}}
+	\caption{دیاگرام \lr{Proximal Policy Optimization}}
+	\label{fig:ppod}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=10cm]{PPO}}
+	\caption{الگوریتم \lr{Proximal Policy Optimization}}
+	\label{fig:ppo}
+\end{figure}
+
+\subsubsection{\lr{HFDRL: An Intelligent Dynamic Cooperate Cashing Method Based on Hierarchical Federated Deep Reinforcement Learning in Edge-Enabled IoT}}
+
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=10cm]{cluster-levels}}
+	\caption{خوشه‌بندی سه‌لایه‌ای از ایستگاه‌های پایه}
+	\label{fig:cluster-levels}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=14cm]{FDRL}}
+	\caption{دیاگرام جریان داده برای پاسخ به درخواست‌های کاربران در مدل سلسله مراتبی و مشارکتی}
+	\label{fig:fdrl}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=14cm]{HFDRL}}
+	\caption{مکانیزم تجمع مدل‌ها در معماری سلسله مراتبی فدراسیونی یادگیری تقویتی عمیق}
+	\label{fig:hfdrl}
+\end{figure}
+
