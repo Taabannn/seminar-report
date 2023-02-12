@@ -123,16 +123,42 @@
 	درواقع منظور از کاربران می‌تواند اپلیکیشن‌هایی برای پایش دیتای تولیدهشده توسط حسگرها باشد. در این مقاله فرض شده است که حرکت کاربران محدود بوده و اتصال بین کاربر و گره برگ پایدار است در واقع این بدین معنیست که کاربر از دامنه‌ی پوشش گره برگ قبل از رسیدن پاسخ خارج نمی‌شود. 
 \end{itemize}
 
-\begin{figure}[ht]
-	\centerline{\includegraphics[width=10cm]{PPO-diagram}}
-	\caption{دیاگرام \lr{Proximal Policy Optimization}}
-	\label{fig:ppod}
-\end{figure}
+این مقاله برای مشخص کردن رتبه‌بندی فابل‌ها به لحاظ محبوبیت در استراتژی ذخیره‌سازی و جایگزینی محتوا از الگوریتم \lr{Proximal Policy Optimization} (\ref{fig:ppo}) به سبک عملگر-نقاد در دو حالت متمرکز و غیرمتمرکز استفاده می‌کند. در حالت متمرکز هریک از گره‌های برگ تصمیمات مربوط به ذخیره‌سازی یا جایگزینی محتوا در حافظه را می‌گیرد اما در حالت غیرمتمرکز گره ریشه بر روی تصمیمات ذخیره‌سازی اثر می‌گذارد و محتویات 
+ذخیره‌سازی در هریک از گره های برگ را مشخص می‌کند و محتویات مشترک میان آنها در گره ریشه ذخیره می‌گردد.
 
 \begin{figure}[ht]
-	\centerline{\includegraphics[width=10cm]{PPO}}
+	\centerline{\includegraphics[width=11cm]{PPO}}
 	\caption{الگوریتم \lr{Proximal Policy Optimization}}
 	\label{fig:ppo}
+\end{figure}
+
+همانطوری که در شکل \ref{fig:ppo} می‌بینید در اینجا نیز از یک سیاست پارامترایز شده \lr{$\pi_{\theta}(a|s)$} برای تخمین محبوبیت فایل‌ها در محیط غیرایستان استفاده می‌شود که برای محیط‌های چندعامله نیز قابل پیاده‌سازی است و به این دلیل این الگوریتم نیز در گروه الگوریتم‌های \lr{policy gradient} قرار می‌گیرد. در اینجا نیز دو شبکه‌ی عصبی عملگر برای تخمین سیاست و نقاد برای تخمین ارزش استیت‌ها \lr{$V^{\pi_{\theta}}(s; \theta_{\nu})$} به کار رفته‌اند. علاوه بر حل مسئله‌ی بهینه‌سازی برای یافتن سیاست بهینه، یکی از اهداف الگوریتم بهینه‌سازی تابع \lr{clipped Surrogate} که از \lr{stochastic gradient ascent} استفاده می‌کند، می‌باشد. در واقع از این تابع برای آپدیت پارامتر سیاست بهینه با پارامتر \lr{$\theta$} توسط شبکه‌ی عملگر براساس فیدبک نقاد طبق مشاهدات در تعامل با محیط استفاده می‌شود. تابع هدف \lr{clipped Surrogate} به صورت 
+\begin{equation}\label{eq:20}
+	\mathcal{L}^{clip}(\theta) = E_{\pi}[\min(b_n(\theta)A_n, clip(b_n(\theta), 1 - \epsilon, 1 + \epsilon)A_n)]
+\end{equation}  
+\begin{equation}\label{eq:21}
+	b_n(\theta) = \frac{\pi_{\theta}(a_n|s_n)}{\pi_{\theta_{old}}(a_n|s_n)}
+\end{equation}  
+تعریف می‌شود.
+
+درواقع تابع \lr{$clip$} یک نسبت احتمالاتی \lr{$b_n(\theta)$} را که مطابق با رابطه‌ی \ref{eq:21} تعریف می‌شود، از ورودی می‌گیرد که اگر مقدار آن از \lr{$1-\epsilon$} کمتر و یا از \lr{$1+\epsilon$} بیشتر نباشد، همان را به عنوان خروجی برمی‌گرداند و در غیر اینصورت یکی از این مقادیر را جایگزین می‌نماید. همانطوری که می‌دانید \lr{$\theta_{old}$} مقدار پیشین این پارامتر قبل از آپدیت می‌باشد و مقدار \lr{$A_n$} به صورت
+\begin{equation}\label{eq:20}
+	A_n = r_n +‌\gamma V^{\pi_{\theta}}(s_{n+1}) - V^{\pi_{\theta}}(s)
+\end{equation}  
+تعریف می‌شود و مقداار \lr{$\theta$} به صورت
+\begin{equation}\label{eq:20}
+	\theta \leftarrow \arg\max \mathcal{L}^{clip}(\theta)
+\end{equation}
+آپدیت می‌شود.
+
+در نهایت نیز همانطوری که مورد انتظار است، متوسط مجموع پاداش‌های دریافتی در حالت غیرمتمرکز (در حالیکه فرمان ذخیره یا جایگزینی محتوا از سوی گره ریشه به گره های برگ صادر می‌شود) نسبت به حالت متمرکز به مقدار بیشتری همگرا می‌شود و با به کار گرفتن روش کنترلی غیرمتمرکز در محیط مقاله مقدار تأخیر و ترافیک در شبکه متوازن‌تر می‌شود.
+\pagebreak
+در شکل \ref{fig:ppod} دیاگرام مربوط به الگوریتم \lr{Proximal Policy Optimization} در مقاله‌ی \cite{wu2022deep} آورده شده است.
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=11cm]{PPO-diagram}}
+	\caption{دیاگرام \lr{Proximal Policy Optimization}}
+	\label{fig:ppod}
 \end{figure}
 
 \subsection{\lr{HFDRL: An Intelligent Dynamic Cooperate Cashing Method Based on Hierarchical Federated Deep Reinforcement Learning in Edge-Enabled IoT}}
